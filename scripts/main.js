@@ -1,44 +1,40 @@
+import * as api from './api.js'
+import * as show from './affichage.js'
+import * as mQ from './utils/mediaQueriesUtils.js'
+import * as popup from './utils/popup.js'
+
 async function lancerScript () {
-    await fetchMeilleurFilm()
-    await fetchMeilleursFilms()
-    await fetchMysteryFilms()
-    await fetchFilmsSF()
-    await fetchFilmsSelection()
+    await api.fetchMeilleurFilm()
+    await api.fetchMeilleursFilms("top-rated-movies", 7)
+    await api.fetchCategoryFilms("Mystery", "mystery-movies")
+    await api.fetchCategoryFilms("Sci-Fi", "sf-movies")
+    await api.fetchFilmsSelection()
 
     document.querySelector(".selecteur1 select")
-        .addEventListener("change", fetchFilmsSelection)
+        .addEventListener("change", api.fetchFilmsSelection)
 
-    eventListenerPopUp()
-    eventListenerClosePopUp()
-    recupFilmPopUp()
+    popup.eventListenerPopUp()
+    popup.eventListenerClosePopUp()
 
     // Initialisation des sections
-    eventListenerFilms("top-rated-movies")
-    eventListenerFilms("mystery-movies")
-    eventListenerFilms("sf-movies")
-    eventListenerFilms("movie-selection")
+    show.eventListenerFilms("top-rated-movies")
+    show.eventListenerFilms("mystery-movies")
+    show.eventListenerFilms("sf-movies")
+    show.eventListenerFilms("movie-selection")
 
    
-    eventListenerMeilleurFilm()
+    
+    show.eventListenerMeilleurFilm()
+
     
     // Redimensionnement écran
     window.addEventListener("resize", () => {
         const sections = ["top-rated-movies", "mystery-movies", "sf-movies", "movie-selection"]
 
         sections.forEach(sectionId => {
-            masquerFilms(sectionId)
+            mQ.masquerFilms(sectionId)
 
-            const article = document.getElementById(sectionId)
-            const films = article.querySelectorAll(".movie-container")
-            const maxFilms = getNombreFilmsParEcran()
-
-            if (films.length <= maxFilms) {
-                masquerBoutonVoirPlus(sectionId)
-                masquerBoutonVoirMoins(sectionId)
-            } else {
-                afficherboutonVoirPlus(sectionId)
-                masquerBoutonVoirMoins(sectionId)
-            }
+     
         })
     })
 }
