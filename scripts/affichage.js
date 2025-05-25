@@ -46,16 +46,6 @@ export function afficherCategoryFilms(category, sectionId) {
     }
 }
 
-export function afficherFilmsSF(filmsSF) {
-    let article = document.getElementById("sf-movies")
-    let movieContainers = article.querySelectorAll(".movie-container")
-
-    for(let i=0; i<6; i++){
-        movieContainers[i].querySelector("img").src = filmsSF[i].image_url
-        movieContainers[i].querySelector(".hover-text").textContent = filmsSF[i].title
-    }
-    
-}
 
 export function afficherFilmsSelection(filmsSelection) {
     let article = document.getElementById("movie-selection")

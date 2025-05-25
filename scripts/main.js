@@ -4,7 +4,7 @@ import * as mQ from './utils/mediaQueriesUtils.js'
 import * as popup from './utils/popup.js'
 
 async function lancerScript () {
-    await api.fetchMeilleurFilm()
+    await api.fetchMeilleurFilm("Fight Club")
     await api.fetchMeilleursFilms("top-rated-movies", 7)
     await api.fetchCategoryFilms("Mystery", "mystery-movies")
     await api.fetchCategoryFilms("Sci-Fi", "sf-movies")

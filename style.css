@@ -725,7 +725,12 @@ img:hover {
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 80%;
-        margin-bottom: 200px;
+        margin-bottom: 500px;
+    
+    }
+
+    #movie-selection .voir-plus {
+        display: grid;
     }
 
     .voir-plus {
@@ -737,6 +742,19 @@ img:hover {
 
 
  @media screen and (max-width: 700px) {
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    nav h1 {
+        display: grid;
+        grid-column: 1 / span 3;
+        width: auto; 
+        justify-self: center;
+    }
+    nav img {
+        display: none;
+    }
     .pop-up {
         grid-template-columns: 1fr;
         width: 60vw;
@@ -983,6 +1001,12 @@ img:hover {
         grid-template-columns: 1fr;
         align-self: center;
         justify-self: center;
+        margin-bottom: 400px;
+    }
+
+    #movie-slection .voir-plus {
+        display: grid; 
+        
     }
 
 }

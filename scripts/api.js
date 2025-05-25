@@ -2,9 +2,9 @@ import * as show from './affichage.js'
 import * as popup from './utils/popup.js'
 import { tousLesFilms } from './utils/data.js'
 
-export async function fetchMeilleurFilm() {
+export async function fetchMeilleurFilm(titreFilm) {
     try {
-        const response = await fetch("http://localhost:8000/api/v1/titles/?title=Fight Club")
+        const response = await fetch(`http://localhost:8000/api/v1/titles/?title=${titreFilm}`)
 
         if (!response.ok) {
             throw new Error(`Erreur : ${response.status}`)

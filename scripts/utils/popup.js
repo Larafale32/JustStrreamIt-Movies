@@ -49,7 +49,6 @@ export function eventListenerClosePopUp() {
 export function eventListenerPopUp() {
     document.querySelectorAll("img").forEach(img => {
         img.addEventListener("click", async (event) => {
-            // Mécanisme 1 : Cherche dans les films déjà chargés
             const movieContainer = event.target.closest(".movie-container");
             const titre = movieContainer.querySelector(".hover-text").textContent;
             const filmLocal = tousLesFilms.find(f => f.title === titre);
@@ -57,7 +56,6 @@ export function eventListenerPopUp() {
             if (filmLocal) {
                 afficherPopUp(filmLocal);
             } 
-            // Mécanisme 2 : Fallback API si non trouvé localement
             else {
                 const titre = recupFilmPopUp(event);
                 if (titre) await api.fetchFilmPopUp(titre);
